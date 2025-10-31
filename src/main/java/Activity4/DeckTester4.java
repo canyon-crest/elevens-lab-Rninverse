@@ -53,5 +53,7 @@ public class DeckTester4 {
 		System.out.println();
 
 		/* *** TO BE COMPLETED IN ACTIVITY 4 *** */
+		d.shuffle();
+		System.out.println(d.toString());
 	}
 }
