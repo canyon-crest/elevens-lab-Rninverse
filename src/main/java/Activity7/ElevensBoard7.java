@@ -186,6 +186,12 @@ public class ElevensBoard7 {
 	 */
 	public boolean isLegal(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		if (selectedCards.size() == 2) {
+			return containsPairSum11(selectedCards);
+		} else if (selectedCards.size() == 3) {
+			return containsJQK(selectedCards);
+		}
+		return false;
 	}
 
 	/**
@@ -198,6 +204,8 @@ public class ElevensBoard7 {
 	 */
 	public boolean anotherPlayIsPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		List<Integer> indexes = cardIndexes();
+		return containsPairSum11(indexes) || containsJQK(indexes);
 	}
 
 
@@ -220,6 +228,17 @@ public class ElevensBoard7 {
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		for (int i = 0; i < selectedCards.size(); i++) {
+			int index1 = selectedCards.get(i);
+			for (int j = i + 1; j < selectedCards.size(); j++) {
+				int index2 = selectedCards.get(j);
+				if (cards[index1].pointValue() + cards[index2].pointValue() == 11) {
+					return true;
+				}
+			}
+		}
+		return false;
+
 	}
 
 	/**
@@ -232,5 +251,19 @@ public class ElevensBoard7 {
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		boolean Jack = false;
+		boolean Queen = false;
+		boolean King = false;
+		for (Integer index : selectedCards) {
+			Card7 card = cards[index];
+			if (card.rank().equals("jack")) {
+				Jack = true;
+			} else if (card.rank().equals("queen")) {
+				Queen = true;
+			} else if (card.rank().equals("king")) {
+				King = true;
+			}
+		}
+		return Jack && Queen && King;
 	}
 }

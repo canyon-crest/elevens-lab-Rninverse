@@ -80,6 +80,7 @@ public class ElevensBoard8 extends Board8 {
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		
 	}
 
 	/**

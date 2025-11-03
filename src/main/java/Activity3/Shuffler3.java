@@ -43,6 +43,41 @@ public class Shuffler3 {
 		System.out.println();
 	}
 
+	public static void flip(){
+		int randomInt = (int)(Math.random() * 3) + 1;
+		if (randomInt == 1 || randomtInt == 2) {
+			System.out.println("Heads");
+		} else {
+			System.out.println("Tails");
+		}
+	}
+
+	public static void arePermutations(int[] values1, int[] values2) {
+		if (values1.length != values2.length) {
+			System.out.println("Arrays are of different lengths.");
+			return;
+		}
+		int n = values1.length;
+		boolean[] found = new boolean[n];
+		for (int i = 0; i < n; i++) {
+			boolean matchFound = false;
+			for (int j = 0; j < n; j++) {
+				if (!found[j] && values1[i] == values2[j]) {
+					found[j] = true;
+					matchFound = true;
+					break;
+				}
+			}
+			if (!matchFound) {
+				System.out.println("Arrays are not permutations of each other.");
+				return;
+			}
+		}
+		System.out.println("Arrays are permutations of each other.");
+	}
+
+
+
 
 	/**
 	 * Apply a "perfect shuffle" to the argument.
@@ -52,6 +87,21 @@ public class Shuffler3 {
 	 */
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+		int mid = (values.length + 1) / 2;
+		int index = 0;
+		for (int i = 0; i < mid; i++) {
+			shuffled[index] = values[i];
+			index += 2;
+		}
+		index = 1;
+		for (int i = mid; i < values.length; i++) {
+			shuffled[index] = values[i];
+			index += 2;	
+		}
+		for (int i = 0; i < values.length; i++) {
+			values[i] = shuffled[i];
+		}
 	}
 
 	/**
@@ -67,5 +117,11 @@ public class Shuffler3 {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		for (int i = values.length - 1; i > 0; i--) {
+			int j = (int)(Math.random() * (i + 1));
+			int temp = values[i];
+			values[i] = values[j];
+			values[j] = temp;
+		}
 	}
 }
