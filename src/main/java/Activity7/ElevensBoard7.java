@@ -201,6 +201,22 @@ public class ElevensBoard7 {
 	}
 
 	/**
+	 * Deal cards to this board to start the game.
+	 */
+
+	private void dealMyCards() {
+
+		for (int k = 0; k < cards.length; k++) {
+
+			cards[k] = deck.deal();
+
+		}
+
+	}
+
+
+
+	/**
 	 * Check for an 11-pair in the selected cards.
 	 * @param selectedCards selects a subset of this board.  It is list
 	 *                      of indexes into this board that are searched
