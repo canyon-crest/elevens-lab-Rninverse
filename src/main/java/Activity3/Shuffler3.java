@@ -45,35 +45,32 @@ public class Shuffler3 {
 
 	public static void flip(){
 		int randomInt = (int)(Math.random() * 3) + 1;
-		if (randomInt == 1 || randomtInt == 2) {
+		if (randomInt == 1 || randomInt == 2) {
 			System.out.println("Heads");
 		} else {
 			System.out.println("Tails");
 		}
 	}
 
-	public static void arePermutations(int[] values1, int[] values2) {
+	public static boolean arePermutations(int[] values1, int[] values2) {
 		if (values1.length != values2.length) {
-			System.out.println("Arrays are of different lengths.");
-			return;
+			return false;
 		}
-		int n = values1.length;
-		boolean[] found = new boolean[n];
-		for (int i = 0; i < n; i++) {
-			boolean matchFound = false;
-			for (int j = 0; j < n; j++) {
-				if (!found[j] && values1[i] == values2[j]) {
-					found[j] = true;
-					matchFound = true;
-					break;
-				}
-			}
-			if (!matchFound) {
-				System.out.println("Arrays are not permutations of each other.");
-				return;
-			}
-		}
-		System.out.println("Arrays are permutations of each other.");
+		boolean[] found = new boolean[values2.length];
+		for (int i = 0; i < values1.length; i++) {
+        	boolean matchFound = false;
+        	for (int j = 0; j < values2.length; j++) {
+            	if (!found[j] && values1[i] == values2[j]) {
+             		found[j] = true;
+                	matchFound = true;
+                	break;
+            	}
+        	}
+        	if (!matchFound) {
+            	return false;
+        	}
+    	}
+    	return true;
 	}
 
 

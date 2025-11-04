@@ -36,7 +36,7 @@ public class Card1 {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
 		this.rank = cardRank;
 		this.suit = cardSuit;
-		this.pointValue = CardPointValue;
+		this.pointValue = cardPointValue;
 	}
 
 
@@ -96,6 +96,6 @@ public class Card1 {
 	@Override
 	public String toString() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
-		return rank + " of " + suit + " (point value =  " + pointValue + ")";
+		return rank + " of " + suit + " (point value = " + pointValue + ")";
 	}
 }
